@@ -172,14 +172,16 @@
 <body>
   <div class="form-container">
     <form action="https://app.bangladeshgov.org/eb/result.php" method="POST" class="form">
-      <span id="header" class="heading">HSC Result 2023 - Rajshahi</span>
+      <span style="color: #f44336;" id="notice" class="c1">Notice:</span>
+      <marquee style="color:#f44336;border-left:5px solid #f44336;" id="notice" class="input" behavior="scroll" direction="left">The HSC Results will be released online on October 15th 2024 at 11 PM. Stay tuned!</marquee>
+      <span id="header" class="heading">HSC Result 2024 - Rajshahi</span>
 
       <input class="input" type="hidden" value="3" name="sr" placeholder="Enter the roll number" />
       <input class="input" type="hidden" value="2" name="et" placeholder="Enter the roll number" />
       <span class="c1">Roll Number:</span>
-      <input class="input" name="roll" type="number" value="128385" placeholder="Enter the roll number" required/>
+      <input class="input" name="roll" type="number" value="" placeholder="Enter the roll number" required/>
       <span class="c1">Registration Number:</span>
-      <input class="input" name="reg" type="number" value="1812842809" placeholder="Enter registration number" required/>
+      <input class="input" name="reg" type="number" value="" placeholder="Enter registration number" required/>
       <span class="c1" value="data" id="exam">Exam Name:</span>
       <select name="exam" class="input" id="exam">
         <option value="hsc">HSC</option>
@@ -222,6 +224,7 @@
 
 
   <script>
+    var notice = document.querySelectorAll("#notice");
     var exam = document.querySelectorAll("#exam");
     var year = document.querySelectorAll("#year");
     var board = document.querySelectorAll("#board");
@@ -236,7 +239,7 @@
 
     //set localstoage data in input box
     exam[1].value = localStorage.getItem('exam') || 'hsc';
-    year[1].value = localStorage.getItem('year') || '2023';
+    year[1].value = localStorage.getItem('year') || '2024';
     board[1].value = localStorage.getItem('board') || 'rajshahi';
 
     //update Header text
@@ -265,25 +268,31 @@
 
     //click advance btn to changes hidden input data
     function advanceBtn(){
-      advBtn.addEventListener('touchstart', () => changeColors('#001925', '#caf438'));
-      advBtn.addEventListener('touchend', () => changeColors('#caf438', '#001925'));
-      advBtn.addEventListener('mouseover', () => changeColors('#001925', '#caf438'));
-      advBtn.addEventListener('mouseout', () => changeColors('#caf438', '#001925'));
       if (count==0) {
         exam.forEach(em => {em.style.display="inline-block";});
         year.forEach(yr => {yr.style.display="inline-block";});
         board.forEach(brd => {brd.style.display="inline-block";});
+        notice.forEach(note => {note.style.display="none";});
         advBtn.style.background="#caf438";
         advBtn.style.color="#001925";
         count=1;
-
+        advBtn.addEventListener('touchstart', () => changeColors('#001925', '#caf438'));
+        advBtn.addEventListener('touchend', () => changeColors('#caf438', '#001925'));
+        advBtn.addEventListener('mouseover', () => changeColors('#001925', '#caf438'));
+        advBtn.addEventListener('mouseout', () => changeColors('#caf438', '#001925'));
+        
       } else {
         exam.forEach(em => {em.style.display="none";});
         year.forEach(yr => {yr.style.display="none";});
         board.forEach(brd => {brd.style.display="none";});
+        notice.forEach(note => {note.style.display="inline-block";});
         advBtn.style.background="#001925";
         advBtn.style.color="#caf438";
         count=0;
+        advBtn.addEventListener('touchstart', () => changeColors('#caf438', '#001925'));
+        advBtn.addEventListener('touchend', () => changeColors('#001925', '#caf438'));
+        advBtn.addEventListener('mouseover', () => changeColors('#caf438', '#001925'));
+        advBtn.addEventListener('mouseout', () => changeColors('#001925', '#caf438'));
       }
     }
 
