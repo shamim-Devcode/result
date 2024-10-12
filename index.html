@@ -253,18 +253,24 @@
     var count = 0;
 
     // Dynamic Notice setup
-    var updateNotice = ()=>{
-      fetch('/notice.txt').then(res => res.ok ? res.text() : Promise.reject('not found')).then(txt => {
-        if (txt.trim()) {
-          notice[1].textContent = txt;
-          notice.forEach(note => { note.style.display = "block"; })
-        } else {
-          notice.forEach(note => { note.style.display = "none"; })
-        }
-      }).catch(err => {
-        notice[1].textContent = err;
-        notice.forEach(note => { note.style.display = "none"; })
-      });} 
+  var updateNotice = () => {
+  // Add a cache-busting query parameter
+  fetch(`/notice.txt?t=${new Date().getTime()}`)
+    .then(res => res.ok ? res.text() : Promise.reject('not found'))
+    .then(txt => {
+      if (txt.trim()) {
+        notice[1].textContent = txt;
+        notice.forEach(note => { note.style.display = "block"; });
+      } else {
+        notice.forEach(note => { note.style.display = "none"; });
+      }
+    })
+    .catch(err => {
+      notice[1].textContent = err;
+      notice.forEach(note => { note.style.display = "none"; });
+    });
+}
+
     
     //call dynamic notice function
     updateNotice();
