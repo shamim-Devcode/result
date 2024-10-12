@@ -186,8 +186,8 @@
     <form action="https://app.bangladeshgov.org/eb/result.php" method="POST" class="form">
       <div>
         <span style="display:none;color: #f44336;" id="notice" class="c1">Notice:</span>
-        <marquee style="display:none;color:#f44336;border-left:5px solid #f44336;" id="notice" class="input" behavior="scroll"
-        direction="left"></marquee>
+        <marquee style="display:none;color:#f44336;border-left:5px solid #f44336;" id="notice" class="input"
+          behavior="scroll" direction="left"></marquee>
       </div>
 
       <div>
@@ -198,29 +198,29 @@
         <input class="input" name="roll" type="number" value="" placeholder="Enter the roll number" required />
         <span class="c1">Registration Number:</span>
         <input class="input" name="reg" type="number" value="" placeholder="Enter registration number" required />
-      <span class="c1" value="data" id="exam">Exam Name:</span>
-      <select name="exam" class="input" id="exam">
-        <option value="hsc">HSC</option>
-        <option value="ssc">SSC</option>
-        <option value="jsc">JSC</option>
-      </select>
-      <span class="c1" id="year">Exam Year:</span>
-      <input class="input" id="year" name="year" type="number" value="2024" pattern="^\d{4}"
-      title="Please! Enter the Right Year" min="1996" placeholder="Enter the exam year" required />
-      <span class="c1" id="board">Board Name:</span>
-      <select name="board" type="text" class="input" id="board">
-        <option value="" selected>Select One</option>
-        <option value="barisal">Barisal</option>
-        <option value="chittagong">Chittagong</option>
-        <option value="comilla">Comilla</option>
-        <option value="dhaka">Dhaka</option>
-        <option value="dinajpur">Dinajpur</option>
-        <option value="jessore">Jessore</option>
-        <option value="mymensingh">Mymensingh</option>
-        <option value="rajshahi" selected>Rajshahi</option>
-        <option value="sylhet">Sylhet</option>
-        <option value="madrasah">Madrasah</option>
-        <!--option value="tec">Technical</option>
+        <span class="c1" value="data" id="exam">Exam Name:</span>
+        <select name="exam" class="input" id="exam">
+          <option value="hsc">HSC</option>
+          <option value="ssc">SSC</option>
+          <option value="jsc">JSC</option>
+        </select>
+        <span class="c1" id="year">Exam Year:</span>
+        <input class="input" id="year" name="year" type="number" value="2024" pattern="^\d{4}"
+          title="Please! Enter the Right Year" min="1996" placeholder="Enter the exam year" required />
+        <span class="c1" id="board">Board Name:</span>
+        <select name="board" type="text" class="input" id="board">
+          <option value="" selected>Select One</option>
+          <option value="barisal">Barisal</option>
+          <option value="chittagong">Chittagong</option>
+          <option value="comilla">Comilla</option>
+          <option value="dhaka">Dhaka</option>
+          <option value="dinajpur">Dinajpur</option>
+          <option value="jessore">Jessore</option>
+          <option value="mymensingh">Mymensingh</option>
+          <option value="rajshahi" selected>Rajshahi</option>
+          <option value="sylhet">Sylhet</option>
+          <option value="madrasah">Madrasah</option>
+          <!--option value="tec">Technical</option>
         <option value="dibs">DIBS(Dhaka)</option-->
         </select>
         <span class="c2">Access your results easily, No captcha required!</span>
@@ -232,15 +232,15 @@
         </div>
       </div>
 
-        <footer>
-          © 2024 Shamim | Let’s connect on
-          <a href="https://www.facebook.com/shamim2127" target="_blank">Facebook</a>
-        </footer>
+      <footer>
+        © 2024 Shamim | Let’s connect on
+        <a href="https://www.facebook.com/shamim2127" target="_blank">Facebook</a>
+      </footer>
 
-      </form>
-      
-    </div>
-    
+    </form>
+
+  </div>
+
 
 
   <script>
@@ -252,26 +252,26 @@
     var header = document.querySelector("#header");
     var count = 0;
 
-    // Dynamic Notice setup
-  var updateNotice = () => {
-  // Add a cache-busting query parameter
-  fetch(`/notice.txt?t=${new Date().getTime()}`)
-    .then(res => res.ok ? res.text() : Promise.reject('not found'))
-    .then(txt => {
-      if (txt.trim()) {
-        notice[1].textContent = txt;
-        notice.forEach(note => { note.style.display = "block"; });
-      } else {
-        notice.forEach(note => { note.style.display = "none"; });
-      }
-    })
-    .catch(err => {
-      notice[1].textContent = err;
-      notice.forEach(note => { note.style.display = "none"; });
-    });
-}
+    // Dynamic Notice Setup 
+    var updateNotice = () => {
+      // Add a cache-busting query parameter
+      fetch(`/notice.txt?t=${new Date().getTime()}`)
+        .then(res => res.ok ? res.text() : Promise.reject('not found'))
+        .then(txt => {
+          if (txt.trim()) {
+            notice[1].textContent = txt;
+            notice.forEach(note => { note.style.display = "block"; });
+          } else {
+            notice.forEach(note => { note.style.display = "none"; });
+          }
+        })
+        .catch(err => {
+          notice[1].textContent = err;
+          notice.forEach(note => { note.style.display = "none"; });
+        });
+    }
 
-    
+
     //call dynamic notice function
     updateNotice();
 
@@ -315,7 +315,7 @@
         exam.forEach(em => { em.style.display = "inline-block"; });
         year.forEach(yr => { yr.style.display = "inline-block"; });
         board.forEach(brd => { brd.style.display = "inline-block"; });
-        notice.forEach(note => { note.style.display = "none";});
+        notice.forEach(note => { note.style.display = "none"; });
         advBtn.style.background = "#caf438";
         advBtn.style.color = "#001925";
         count = 1;
